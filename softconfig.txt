@@ -1,78 +1,7 @@
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [sq_mysql_dblogin_gly]    Script Date: 03/21/2018 18:39:59 ******/
-
-use master
---创建登陆名
-CREATE LOGIN [sq_mysql_dblogin_gly] WITH PASSWORD=N'Sq_mysql_dblogin_gly', DEFAULT_DATABASE=[sq_mysql], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-
-use sq_mysql
---创建数据库用户
-CREATE USER [sq_mysql_dblogin_gly] FOR LOGIN [sq_mysql_dblogin_gly] WITH DEFAULT_SCHEMA=[dbo]
-
---删除用户
-数据库主体在该数据库中拥有 架构，无法删除。 (Microsoft SQL Server，错误: 15138)
-可将用户对应的架构的架构所有者更改为他自己,
-
-use sq_mysql
---创建角色
-create role sq_mysql_dblogin_gly_DR;  
---给解色权限
-GRANT CONTROL ON [dbo].[_v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpdhb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpdhmxb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpjhb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpjhmxb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpkcb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpkcqc] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpxsb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpxsmxb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpykb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_cpykmxb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_ghsda] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_ghszkqc] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_xskhda] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_xskhzkqc] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ls_xxdmb] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_menuqx] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_ptoclient] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_userzd] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[_v_msg] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_menu] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_usermenu] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_sp_zmdconfig] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_wid_layout] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_wid] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_v_tbzdinfo] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo]._v_hang_plate_detail TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_user TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_sp_xskhda TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo]._v_hang_plate TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_dpt TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_v_webzd TO [sq_mysql_dblogin_gly_dr]
 
 
-GRANT CONTROL ON [dbo].v_v_userdpt TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_v_dpt1 TO [sq_mysql_dblogin_gly_dr]
---管理员权限
---GRANT CONTROL ON p_WEBSJ_FZ TO [sq_mysql_dblogin_gly_dr]
---GRANT CONTROL ON p_WEBSJ_EDIT TO [sq_mysql_dblogin_gly_dr]
 
-GRANT CONTROL ON [dbo].v_sp_userck TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_sp_ckb TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_ls_userck TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].v_ls_ckb TO [sq_mysql_dblogin_gly_dr]
---GRANT CONTROL ON p_UPWEBJS TO [sq_mysql_dblogin_gly_dr]
---GRANT CONTROL ON p_UPSJY TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON v_tbzd TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON SplitToTable TO [sq_mysql_dblogin_gly_dr]
---GRANT CONTROL ON P_WEBSJ_FZ_ZD TO [sq_mysql_dblogin_gly_dr]
---GRANT CONTROL ON p_AUTOVIEW TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON v_sp_userkh TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON V_sp_cpda TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON v_sp_xxdmb TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON v_sp_cmzb TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON v_sp_shdmb TO [sq_mysql_dblogin_gly_dr]
+
 
 use [sq_mysys]
 GO
@@ -83,55 +12,7 @@ GO
 
 >>>>>>> 1e11f74903f6fd9bc60ca2bcae8506b7698c63f5
 
---将角色授予数据库用户
-exec sp_addrolemember   
-@rolename='sq_mysql_dblogin_gly_dr',  
-@membername='sq_mysql_dblogin_gly';  
 
-
-
-use master
---创建登陆名
-CREATE LOGIN [sq_mysql_link] WITH PASSWORD=N'Sq_mysql_link', DEFAULT_DATABASE=[sq_mysql], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-use master
---因为要用到连接服务器,所以要有权限
-sp_addsrvrolemember sq_mysql_link,SYSADMIN
-
-use SQ_MYSQL
-CREATE USER [sq_mysql_link] FOR LOGIN [sq_mysql_link] WITH DEFAULT_SCHEMA=[dbo]
-
---将角色授予数据库用户
-exec sp_addrolemember   
-@rolename='db_owner',  
-@membername='sq_mysql_link'; 
-
-
-
-use master
---创建登陆名
-CREATE LOGIN [dblogin] WITH PASSWORD=N'Dblogin123456!', DEFAULT_DATABASE=[sq_mysys], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-
-use sq_mysys
-alter USER [dblogin]  with login=dblogin
-
-use master
---创建登陆名
-CREATE LOGIN masterlogin WITH PASSWORD=N'Masterlogin123456!', DEFAULT_DATABASE=[sq_mysys], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-
-use sq_mysys
-alter USER [masterlogin]  with login=masterlogin
-
-
-use master
---创建登陆名
-CREATE LOGIN mblogin WITH PASSWORD=N'Mblogin123456!', DEFAULT_DATABASE=[mb], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-
-use mb
-alter USER mblogin  with login=mblogin
 
 
 SELECT * FROM dbo.v_djlx
@@ -147,17 +28,4 @@ sp_refreshview _v_hang_plate_detail
 
 
 
-mysql库：
-use master
---创建登陆名
-CREATE LOGIN [sq_mysql_dblogin] WITH PASSWORD=N'Sq_mysql_dblogin', DEFAULT_DATABASE=[sq_mysql], DEFAULT_LANGUAGE=[简体中文], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
 
-use sq_mysql
---创建数据库用户
-CREATE USER [sq_mysql_dblogin] FOR LOGIN [sq_mysql_dblogin] WITH DEFAULT_SCHEMA=[dbo]
-use sq_mysql
---将角色授予数据库用户
-exec sp_addrolemember   
-@rolename='sq_mysql_dblogin_dr',  
-@membername='sq_mysql_dblogin';  
