@@ -65,6 +65,9 @@ GRANT CONTROL ON p_WEBSJ_EDIT TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON p_WEBSJ_FZ TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON P_WEBSJ_FZ_ZD TO [sq_mysql_dblogin_gly_dr]
 --管理员权限 end 
+GRANT CONTROL ON [dbo].v_sp_user_ck TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_sp_cmxxb TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_sp_cmmxb TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON SplitToTable TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].v_dpt TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].v_ls_ckb TO [sq_mysql_dblogin_gly_dr]
@@ -92,6 +95,7 @@ GRANT CONTROL ON [dbo].[v_wid_layout] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_ls_user_ck] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo].[v_ls_ghsda] TO [sq_mysql_dblogin_dr]
+
 
 --将角色授予数据库用户
 exec sp_addrolemember   
