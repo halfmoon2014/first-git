@@ -97,9 +97,11 @@ GRANT CONTROL ON [dbo].[v_wid] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_wid_layout] TO [sq_mysql_dblogin_gly_dr]
 
 GRANT CONTROL ON [dbo].[v_ls_user_ck] TO [sq_mysql_dblogin_gly_dr]
-GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_dr]
-GRANT CONTROL ON [dbo].[v_ls_ghsda] TO [sq_mysql_dblogin_dr]
-
+GRANT CONTROL ON [dbo].[v_ls_xxdmb] TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo]._v_msg_d TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].p_KCJS_QC TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_djlx TO [sq_mysql_dblogin_gly_dr]
 
 --将角色授予数据库用户
 exec sp_addrolemember   
@@ -212,7 +214,8 @@ GRANT CONTROL ON [dbo].[v_wid_layout] TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo].[v_ls_user_ck] TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo].[v_ls_ghsda] TO [sq_mysql_dblogin_dr]
- 
+
+
 
 use sq_mysql
 --将角色授予数据库用户
