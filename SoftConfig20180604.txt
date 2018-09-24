@@ -238,10 +238,11 @@ exec sp_addrolemember
 
        文件扩展名      MIME类型　
 
-.svg             image/svg+xml
-.woff            application/x-font-woff
+ 
 .woff2          application/x-font-woff
-
+    <remove fileExtension=".ttf" />
+      <mimeMap fileExtension=".ttf" mimeType="application/x-font-truetype" />
+      
 
 20180924日志
 UPDATE tb_wid SET js=REPLACE(js,'myCheckSessionQuery','wQuery') WHERE js LIKE '%myCheckSessionQuery%'
