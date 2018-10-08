@@ -102,7 +102,12 @@ GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo]._v_msg_d TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].p_KCJS_QC TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].v_djlx TO [sq_mysql_dblogin_gly_dr]
-
+GRANT CONTROL ON [dbo].p_KCJS_DJLX TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_xskhda TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo]._v_ls_bfb TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_ghszkqc TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_xskhzkqc  TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].p_UPMENUHELP TO [sq_mysql_dblogin_gly_dr]
 --将角色授予数据库用户
 exec sp_addrolemember   
 @rolename='sq_mysql_dblogin_gly_dr',  
@@ -224,6 +229,25 @@ exec sp_addrolemember
 @membername='sq_mysql_dblogin';  
 /*5 mysql库 end */
 
+问题：最近在IIS上部署web项目的时候，发现浏览器总是报找不到woff、woff2字体的错误。导致浏览器加载字体报404错误，白白消耗了100-200毫秒的加载时间。
+
+原因：因为服务器IIS不认SVG，WOFF/WOFF2 这几个文件类型，只要在IIS上添加MIME 类型即可。
+
+解决方法
+
+1、打开服务器IIS管理器，找到MIME类型。
+
+
+
+2、添加MIME类型 添加三条：　　
+
+       文件扩展名      MIME类型　
+
+ 
+.woff2          application/x-font-woff
+    <remove fileExtension=".ttf" />
+      <mimeMap fileExtension=".ttf" mimeType="application/x-font-truetype" />
+      
 
 20180924日志
 UPDATE tb_wid SET js=REPLACE(js,'myCheckSessionQuery','wQuery') WHERE js LIKE '%myCheckSessionQuery%'
@@ -240,3 +264,19 @@ UPDATE tb_wid SET js=REPLACE(js,'setValRowsTotal()','getRowCount()') WHERE js LI
 UPDATE tb_wid_layout SET event=REPLACE(event,'setValRowsTotal()','getRowCount()') WHERE event LIKE '%getRowCount%'
 
 111
+wQuery
+onclick="myDefaultOperate('print')"
+onclick="myDefaultOperate('excel')"
+
+sAlert('连接失败!', function () {
+    document.getElementById("btn_save").disabled = false;
+    document.getElementById("btn_del").disabled = false;
+});
+
+sConfirm("确定删除吗?", function (isConfirm) {
+    if (isConfirm) {
+        godel();
+    }
+})
+
+closeWindow("ok")

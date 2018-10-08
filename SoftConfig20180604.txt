@@ -102,6 +102,13 @@ GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo]._v_msg_d TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].p_KCJS_QC TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].v_djlx TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].p_KCJS_DJLX TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_xskhda TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo]._v_ls_bfb TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_ghszkqc TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].v_ls_xskhzkqc  TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].p_UPMENUHELP TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo].p_UPWEBHELP TO [sq_mysql_dblogin_gly_dr]
 
 --将角色授予数据库用户
 exec sp_addrolemember   
@@ -259,3 +266,19 @@ UPDATE tb_wid SET js=REPLACE(js,'setValRowsTotal()','getRowCount()') WHERE js LI
 UPDATE tb_wid_layout SET event=REPLACE(event,'setValRowsTotal()','getRowCount()') WHERE event LIKE '%getRowCount%'
 
 111
+wQuery
+onclick="myDefaultOperate('print')"
+onclick="myDefaultOperate('excel')"
+
+sAlert('连接失败!', function () {
+    document.getElementById("btn_save").disabled = false;
+    document.getElementById("btn_del").disabled = false;
+});
+
+sConfirm("确定删除吗?", function (isConfirm) {
+    if (isConfirm) {
+        godel();
+    }
+})
+
+closeWindow("ok")
