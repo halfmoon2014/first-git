@@ -1,0 +1,94 @@
+chmod 777 ./ngrok/ngrokd
+
+
+到此，服务端已经生成完毕。可以将可执行文件bin/ngrokd拷贝出来。
+
+# 服务端启动测试
+./bin/ngrokd -domain="ngrok.kioye.cn" -httpAddr=":80" -httpsAddr=":443" -tunnelAddr=":4443"
+# 创建快捷启动脚本
+vi start-ngrokd.sh
+# 内容如下：
+#!/bin/sh
+# 注意你的路径可能和我不同！
+/root/ngrok/bin/ngrokd -domain="ngrok.kioye.cn" -httpAddr=":80" -httpsAddr=":443" -tunnelAddr=":4443" &
+
+# 设置文件权限
+chmod 755 start-ngrokd.sh
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+启动没问题后，我们将其添加到自启动列表。
+
+vi /etc/init.d/ngrok
+# 内容如下：
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          ngrok
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start or stop the ngrok Proxy.
+### END INIT INFO
+
+# 注意你的路径可能和我的不同！！
+ngrok_path=/root/ngrok/
+case "$1" in
+        start)
+                echo "start ngrok service.."
+                sh ${ngrok_path}/start-ngrokd.sh
+                ;;
+        *)
+        exit 1
+        ;;
+esac
+
+
+# ngrok脚本文件 给权限
+chmod 755 /etc/init.d/ngrok
+
+# 添加启动服务 ngrok
+chkconfig --add  ngrok
+# 尝试启动
+service ngrok start
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+服务端设置完成。
