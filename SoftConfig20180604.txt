@@ -96,6 +96,9 @@ GRANT CONTROL ON [dbo].v_v_webzd TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_wid] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_wid_layout] TO [sq_mysql_dblogin_gly_dr]
 
+ GRANT CONTROL ON [dbo].[v_usertz] TO [sq_mysql_dblogin_gly_dr]
+ GRANT CONTROL ON [dbo].v_conn TO [sq_mysql_dblogin_gly_dr]
+
 GRANT CONTROL ON [dbo].[v_ls_user_ck] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_ls_xxdmb] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
