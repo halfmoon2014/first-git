@@ -37,6 +37,11 @@ create role sq_mysql_dblogin_gly_DR;
 
 GRANT CONTROL ON [dbo]._v_hang_plate TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo]._v_hang_plate_detail TO [sq_mysql_dblogin_gly_dr]
+
+GRANT CONTROL ON [dbo]._v_hang_plate_rk TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo]._v_hang_plate_rk_detail TO [sq_mysql_dblogin_gly_dr]
+
+
 GRANT CONTROL ON [dbo].[_v_ls_cpda] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[_v_ls_cpdhb] TO [sq_mysql_dblogin_gly_dr]
 GRANT CONTROL ON [dbo].[_v_ls_cpdhmxb] TO [sq_mysql_dblogin_gly_dr]
@@ -172,6 +177,10 @@ CREATE USER [sq_mysql_dblogin] FOR LOGIN [sq_mysql_dblogin] WITH DEFAULT_SCHEMA=
 
 --给解色权限
 
+
+GRANT CONTROL ON [dbo]._v_hang_plate_rk TO [sq_mysql_dblogin_dr]
+GRANT CONTROL ON [dbo]._v_hang_plate_rk_detail TO [sq_mysql_dblogin_dr]
+
 GRANT CONTROL ON [dbo]._v_hang_plate TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo]._v_hang_plate_detail TO [sq_mysql_dblogin_dr]
 GRANT CONTROL ON [dbo].[_v_ls_cpda] TO [sq_mysql_dblogin_dr]
@@ -286,6 +295,7 @@ sConfirm("确定删除吗?", function (isConfirm) {
 
 closeWindow("ok")
 
+---2021-02-05
 1.入库模块
   挂镀，日期，客户,型号,颜色,重量,斤个数，备注,拍图片， 滚镀车间，日期，客户，产品型号，颜色，重量，备注
 2.入库查询分车间查寻
@@ -296,3 +306,90 @@ closeWindow("ok")
   进料日期，客户,型号 颜色  ，入库重量，斤个数，入库总数，出库重量，出库总个数，损耗重量
 5 客户停用
 6车间月报表增加 喷漆金额
+
+创建表
+SELECT * FROM _tb_hang_plate_rk
+SELECT * FROM [_tb_hang_plate_rk_detail]
+
+
+--1不用WEB系统 上的生成视图工具，GLY这个账号没权限
+EXEC p_AUTOVIEW '_tb_hang_plate_rk_detail'
+EXEC p_AUTOVIEW '_tb_hang_plate_rk'
+--2
+GRANT CONTROL ON [dbo]._v_hang_plate_rk TO [sq_mysql_dblogin_gly_dr]
+GRANT CONTROL ON [dbo]._v_hang_plate_rk_detail TO [sq_mysql_dblogin_gly_dr]
+
+GRANT CONTROL ON [dbo]._v_hang_plate_rk TO [sq_mysql_dblogin_dr]
+GRANT CONTROL ON [dbo]._v_hang_plate_rk_detail TO [sq_mysql_dblogin_dr]
+
+
+
+CREATE TABLE [dbo].[_tb_group_pic](
+ [group_id] [INT] NOT NULL,
+ [biz_id] [INT] NOT NULL,
+ [biz_key] [VARCHAR](500) NOT NULL,
+ [pic] [VARCHAR](500) NOT NULL,
+ [remark] [VARCHAR](500) NOT NULL,
+ [bizDate] [DATETIME] NULL,
+ [createor_id] [INT] NOT NULL,
+ [sadel] [INT] NOT NULL,
+ [sadeltime] [DATETIME] NOT NULL,
+ [sysdel] [INT] NOT NULL,
+ [sysdeltime] [DATETIME] NOT NULL,
+ [id] [INT] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK__tb_group_pic] PRIMARY KEY CLUSTERED 
+(
+ [id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_group_id]  DEFAULT ((0)) FOR [group_id]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_biz_id]  DEFAULT ((0)) FOR [biz_id]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_bizkey]  DEFAULT ('') FOR [biz_key]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_pic]  DEFAULT ('') FOR [pic]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_remark]  DEFAULT ('') FOR [remark]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF__tb_group_pic_createor_id]  DEFAULT ((0)) FOR [createor_id]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF___tb_group__sadel__0D3BA212]  DEFAULT ((0)) FOR [sadel]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF___tb_group__sadel__0E2FC64B]  DEFAULT ('1900-01-01 0:00:00') FOR [sadeltime]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF___tb_group__sysde__0F23EA84]  DEFAULT ((0)) FOR [sysdel]
+GO
+
+ALTER TABLE [dbo].[_tb_group_pic] ADD  CONSTRAINT [DF___tb_group__sysde__10180EBD]  DEFAULT ('1900-01-01 0:00:00') FOR [sysdeltime]
+GO
+
+
+
+
+
+EXEC p_AUTOVIEW '_tb_group_pic'
+
+GRANT CONTROL ON [dbo]._v_group_pic TO [sq_mysql_dblogin_gly_dr]
+ 
+
+GRANT CONTROL ON [dbo]._v_group_pic TO [sq_mysql_dblogin_dr]
+
+
+
+CREATE TABLE [dbo].[_tb_group_sum](
+ [group_id] [INT] NOT NULL,
+ [remark] [VARCHAR](500) NOT NULL,
+ 
+---2021-02-05 end
+
