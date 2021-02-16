@@ -1,0 +1,108 @@
+
+
+yum install python-pip -y
+pip --help
+pip -V
+
+pip install locust #ln -s /usr/local/python3/bin/locust /usr/bin/locust#创建链接 https://blog.csdn.net/u012887259/article/details/103816713?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control
+ pip install locustio
+pip install locustio -i https://mirrors.aliyun.com/pypi/simple/ #或者试试这个应该可以加速
+ 
+
+
+
+pip install --upgrade pip
+-----///
+rpmdb: BDB0113 Thread/process 31539/139741560211520 failed: BDB1507 Thread d
+# cd /var/lib/rpm
+# ls
+Basenames     __db.001  __db.003  Group       Name          Packages     Requirename  Sigmd5
+Conflictname  __db.002  Dirnames  Installtid  Obsoletename  Providename  Sha1header   Triggername
+# rm -rf __db*
+# rpm --rebuilddb
+-----/*end*/
+-------//
+[root@VM-0-11-centos rpm]# pip --version
+Traceback (most recent call last):
+  File "/usr/bin/pip", line 9, in <module>
+    load_entry_point('pip==21.0.1', 'console_scripts', 'pip')()
+  File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 378, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 2566, in load_entry_point
+    return ep.load()
+  File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 2260, in load
+    entry = __import__(self.module_name, globals(),globals(), ['__name__'])
+  File "/usr/lib/python2.7/site-packages/pip/_internal/cli/main.py", line 60
+    sys.stderr.write(f"ERROR: {exc}")
+
+wget https://bootstrap.pypa.io/3.5/get-pip.py
+python3 get-pip.py#python2 get-pip.py
+
+-----/*end*/
+
+-----//python 2->3https://www.cnblogs.com/sheng518/p/11818562.html
+1.安装编译环境包（防止出现安装错误）
+
+1 yum install gcc-c++ gcc make cmake zlib-devel bzip2-devel openssl-devel ncurse-devel libffi-devel -y
+2.在线下载Python3.7源码包
+
+1 #进入tmp目录
+2 cd /tmp
+3 #下载python3.7.3
+4 wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+3.解压并配置
+
+ 
+1 #解压
+2 tar Jxvf Python-3.7.3.tar.xz
+3 #进入python3.7.3目录
+4 cd Python-3.7.3
+5 #创建目录
+6 mkdir -p /usr/local/python3
+7 #配置（指定安装目录）
+8 ./configure --prefix=/usr/local/python3 --enable-optimizations
+ 
+4.编译及安装
+1 make && make install
+
+
+5.更换系统默认Python版本
+
+    1).备份原系统旧版本python
+
+1 mv /usr/bin/python /usr/bin/python.bak    #把原有的程序链接备份
+2 mkdir /usr/bin/pip
+3 mv /usr/bin/pip /usr/bin/pip.bak#把原有的程序链接备份
+    2).配置环境变量：创建新版本Python和pip的软链接
+
+1 ln -s /usr/local/python3/bin/python3.7 /usr/bin/python
+2 ln -s /usr/local/python3/bin/pip3 /usr/bin/pip
+     3).查看python版本
+
+1 python -V
+6.修改yum功能
+
+因为yum的功能依赖Pyhon2，现在更改默认Python版本后会导致yum无法正常工作，所以进行以下3处修复
+第1处：
+
+1 vim /usr/bin/yum
+
+  把最顶部的
+
+  改成：#！ /usr/bin/python2.7
+
+第2处：
+
+1 vim /usr/libexec/urlgrabber-ext-down
+
+  把最顶部的
+
+  改成：#！ /usr/bin/python2.7
+
+ 
+
+/usr/sbin/firewalld
+/usr/bin/firewall-cmd
+
+这两个也改下
+--// end 
