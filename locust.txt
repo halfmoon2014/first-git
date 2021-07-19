@@ -1,4 +1,4 @@
-
+阿里云服务器上
 
 yum install python-pip -y
 pip --help
