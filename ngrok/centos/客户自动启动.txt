@@ -1,0 +1,26 @@
+
+[Unit]
+Description=Share local port(s) with ngrok
+After=syslog.target network.target
+
+[Service]
+PrivateTmp=true
+Type=simple
+Restart=always
+RestartSec=1min
+StandardOutput=null
+StandardError=null
+ExecStart=/usr/local/ngrok/ngrok -config=/usr/local/ngrok/ngrok.cfg -log=/usr/local/ngrok/ngrok.log start-all  %i
+ExecStop=/usr/bin/killall ngrok
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+mv grok.service /usr/lib/systemd/system/
+systemctl enable ngrok.service //加入开机启动
+systemctl daemon-reload  //重新载入 systemd,扫描新的或有变动的单元
+
+https://blog.csdn.net/sunhuwh/article/details/108076078

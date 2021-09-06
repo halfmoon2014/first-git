@@ -1,0 +1,9 @@
+概念模型
+A班级  B学生
+A-B是one-many
+A如果包含至少一个学生 勾选mandatory  1,n
+A如果可能一个学生也没有,  不勾选 0,n
+
+B如果一定有班级那么勾先 mandatory  1,1
+B如果有可能没有班级 不勾选 mandatory  0,1
+物理模型
