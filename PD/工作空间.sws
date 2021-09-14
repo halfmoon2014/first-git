@@ -4,8 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{40677ECE-1F14-4A56-8F8C-FD5449B1A1AA}" Name="理想型学校关系概念模型" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="理想型学校关系概念模型.cdm"/>
-		<Model Expanded="Yes" ID="{3105E7DB-550B-4FC0-8192-B64EDB0BB1F9}" Name="物理数据模型" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="物理数据模型.pdm"/>
+		<Model Expanded="Yes" ID="{BE719D02-34E8-494E-8649-F26CBCA71A40}" Name="tlsoft_yf" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="tlsoft_yf.pdm"/>
 	</Local>
 	<BrowserModule Name="仓库(&amp;R)"/>
 </Workspace>
