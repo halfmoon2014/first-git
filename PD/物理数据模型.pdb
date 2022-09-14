@@ -1575,8 +1575,8 @@ Shadow=0</a:DisplayPreferences>
 <o:ReferenceSymbol Id="o5">
 <a:CreationDate>1628518127</a:CreationDate>
 <a:ModificationDate>1628520415</a:ModificationDate>
-<a:Rect>((-27235,17891), (-25985,22119))</a:Rect>
-<a:ListOfPoints>((-26610,21719),(-26610,18291))</a:ListOfPoints>
+<a:Rect>((-27236,17891), (-25985,22119))</a:Rect>
+<a:ListOfPoints>((-26609,21719),(-26611,18291))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>12615680</a:LineColor>
